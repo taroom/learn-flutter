@@ -20,7 +20,11 @@ class MainApp extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.deepPurple),
               child: Center(
-                child: Text('Agus Sutarom'),
+                child: Text(
+                  'Agus Sutarom',
+                  style: TextStyle(
+                      color: Colors.white, fontFamily: "Serif", fontSize: 20.0),
+                ),
               )),
         ),
       ),
