@@ -9,14 +9,19 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
+        //as activity
         body: Center(
-          child: Text(
-            'Hello World! Nama Saya Agus Sutarom',
-            style: TextStyle(
-                fontSize: 20.0, color: Colors.amber, fontFamily: 'Arial'),
-          ),
+          child: Container(
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.deepPurple),
+              child: Center(
+                child: Text('Agus Sutarom'),
+              )),
         ),
       ),
     );
