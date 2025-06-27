@@ -123,68 +123,62 @@ class HalamanCardAndParsing extends StatelessWidget {
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Card(
-                child: Column(
-                  children: <Widget>[
-                    Icon(
-                      Icons.home,
-                      size: 30.0,
-                      color: Colors.red[500],
-                    ),
-                    Text(
-                      'Home',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
+              CardList(
+                userIcon: Icons.home,
+                userIconColor: Colors.red[500],
+                userText: 'Home',
               ),
-              Card(
-                child: Column(
-                  children: <Widget>[
-                    Icon(
-                      Icons.home,
-                      size: 30.0,
-                      color: Colors.red[500],
-                    ),
-                    Text(
-                      'Home',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
+              CardList(
+                userIcon: Icons.alarm,
+                userIconColor: Colors.brown[500],
+                userText: 'Alarm',
               ),
-              Card(
-                child: Column(
-                  children: <Widget>[
-                    Icon(
-                      Icons.home,
-                      size: 30.0,
-                      color: Colors.red[500],
-                    ),
-                    Text(
-                      'Home',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
+              CardList(
+                userIcon: Icons.air,
+                userIconColor: Colors.amber[500],
+                userText: 'Air',
               ),
-              Card(
-                child: Column(
-                  children: <Widget>[
-                    Icon(
-                      Icons.home,
-                      size: 30.0,
-                      color: Colors.red[500],
-                    ),
-                    Text(
-                      'Home',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              )
+              CardList(
+                userIcon: Icons.settings,
+                userIconColor: Colors.blue[500],
+                userText: 'Setting',
+              ),
             ],
           )),
+    );
+  }
+}
+
+class CardList extends StatelessWidget {
+  // const CardList({super.key});
+  final IconData userIcon;
+  final Color? userIconColor;
+  final String userText;
+  const CardList(
+      {super.key,
+      required this.userIcon,
+      required this.userIconColor,
+      required this.userText});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(5.0),
+      child: Card(
+        child: Column(
+          children: <Widget>[
+            Icon(
+              userIcon,
+              size: 30.0,
+              color: userIconColor,
+            ),
+            Text(
+              userText,
+              style: TextStyle(fontSize: 16),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
