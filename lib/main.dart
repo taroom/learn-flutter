@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const Halaman1());
+  // runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -26,6 +27,34 @@ class MainApp extends StatelessWidget {
                       color: Colors.white, fontFamily: "Serif", fontSize: 20.0),
                 ),
               )),
+        ),
+      ),
+    );
+  }
+}
+
+class Halaman1 extends StatelessWidget {
+  const Halaman1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Agus Sutarom App',
+      home: Scaffold(
+        backgroundColor: Colors.yellow[200],
+        appBar: AppBar(
+          leading: Icon(Icons.home),
+          title: Center(
+            child: Text(
+              'Agus Sutarom',
+              style: TextStyle(color: Colors.white, fontSize: 15),
+            ),
+          ),
+          backgroundColor: Colors.red,
+          actions: <Widget>[Icon(Icons.search)],
+        ),
+        body: Center(
+          child: Text('Halaman'),
         ),
       ),
     );
