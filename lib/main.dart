@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const HalamanRowColumn());
+  runApp(const HalamanCardAndParsing());
+  // runApp(const HalamanRowColumn());
   // runApp(const Halaman1());
   // runApp(const MainApp());
 }
@@ -93,6 +94,95 @@ class HalamanRowColumn extends StatelessWidget {
                 ],
               ),
               Icon(Icons.account_balance),
+            ],
+          )),
+    );
+  }
+}
+
+class HalamanCardAndParsing extends StatelessWidget {
+  const HalamanCardAndParsing({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Halaman Ke 2',
+      home: Scaffold(
+          backgroundColor: Colors.yellow[200],
+          appBar: AppBar(
+            leading: Icon(Icons.home),
+            title: Center(
+              child: Text(
+                'Card Dan Parsing',
+                style: TextStyle(color: Colors.white, fontSize: 15),
+              ),
+            ),
+            backgroundColor: Colors.red,
+            actions: <Widget>[Icon(Icons.search)],
+          ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Card(
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.home,
+                      size: 30.0,
+                      color: Colors.red[500],
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(fontSize: 16),
+                    )
+                  ],
+                ),
+              ),
+              Card(
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.home,
+                      size: 30.0,
+                      color: Colors.red[500],
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(fontSize: 16),
+                    )
+                  ],
+                ),
+              ),
+              Card(
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.home,
+                      size: 30.0,
+                      color: Colors.red[500],
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(fontSize: 16),
+                    )
+                  ],
+                ),
+              ),
+              Card(
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.home,
+                      size: 30.0,
+                      color: Colors.red[500],
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(fontSize: 16),
+                    )
+                  ],
+                ),
+              )
             ],
           )),
     );
