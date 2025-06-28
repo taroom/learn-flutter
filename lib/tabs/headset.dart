@@ -19,9 +19,9 @@ class _HeadsetState extends State<Headset> {
             style: TextStyle(fontSize: 30),
           ),
           Padding(padding: EdgeInsets.all(20)),
-          Icon(
-            Icons.headset,
-            size: 90,
+          Image.asset(
+            'img/headset.jpg',
+            width: 400,
           )
         ],
       ),

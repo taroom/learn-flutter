@@ -19,9 +19,9 @@ class _SmartPhoneState extends State<SmartPhone> {
             style: TextStyle(fontSize: 30),
           ),
           Padding(padding: EdgeInsets.all(20)),
-          Icon(
-            Icons.smartphone,
-            size: 90,
+          Image.asset(
+            'img/smartphone.jpg',
+            width: 200,
           )
         ],
       ),
