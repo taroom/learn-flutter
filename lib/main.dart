@@ -49,6 +49,33 @@ class ListViewData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
+      child: Row(
+        children: <Widget>[
+          Padding(padding: EdgeInsets.all(20)),
+          Image(
+            image: NetworkImage(imgUrlContent),
+            width: 50,
+          ),
+          Padding(padding: EdgeInsets.all(5)),
+          Center(
+            child: Column(
+              children: <Widget>[
+                Text(
+                  textContent,
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  'Ini adalah deskripsi dari : $textContent',
+                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+
+    /* return Center(
       child: Column(
         children: <Widget>[
           Padding(padding: EdgeInsets.all(20)),
@@ -62,7 +89,7 @@ class ListViewData extends StatelessWidget {
           )
         ],
       ),
-    );
+    ); */
   }
 }
 
