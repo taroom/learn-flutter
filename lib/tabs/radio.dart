@@ -19,8 +19,9 @@ class _RadioHeadState extends State<RadioHead> {
             style: TextStyle(fontSize: 30),
           ),
           Padding(padding: EdgeInsets.all(20)),
-          Image.asset(
-            'img/radio.jpg',
+          Image(
+            image: NetworkImage(
+                'https://m.media-amazon.com/images/I/51cCe4+sebL._SL500_.jpg'),
             width: 200,
           )
         ],

@@ -19,8 +19,9 @@ class _SmartPhoneState extends State<SmartPhone> {
             style: TextStyle(fontSize: 30),
           ),
           Padding(padding: EdgeInsets.all(20)),
-          Image.asset(
-            'img/smartphone.jpg',
+          Image(
+            image: NetworkImage(
+                'https://img.lovepik.com/free-png/20211215/lovepik-smartphone-model-png-image_401660433_wh1200.png'),
             width: 200,
           )
         ],
