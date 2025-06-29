@@ -57,7 +57,25 @@ class _ListViewJsonAppState extends State<ListViewJsonApp> {
               itemCount: _dataJSON.length,
               itemBuilder: (context, index) {
                 final data = _dataJSON[index];
-                return Card(child: Text(data['title']));
+                return Container(
+                    padding: EdgeInsets.all(10),
+                    child: Card(
+                        child: Container(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            data['title'],
+                            style: TextStyle(color: Colors.blue, fontSize: 20),
+                          ),
+                          Text(
+                            data['body'],
+                            style: TextStyle(color: Colors.grey, fontSize: 10),
+                          ),
+                        ],
+                      ),
+                    )));
               },
             ),
     );
