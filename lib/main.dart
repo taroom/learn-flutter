@@ -21,6 +21,7 @@ class ListViewApp extends StatelessWidget {
         backgroundColor: Colors.red,
       ),
       body: ListView(
+        padding: EdgeInsets.all(20),
         children: <Widget>[
           ListViewData(
               imgUrlContent:
