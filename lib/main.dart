@@ -14,34 +14,55 @@ class ListViewApp extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        title: const Text('ListView Stateful'),
-        backgroundColor: Colors.amber,
+        title: const Text(
+          'Daftar Tutorial',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.red,
       ),
       body: ListView(
         children: <Widget>[
-          ListTile(
-            leading: Icon(Icons.speaker),
-            title: Text("Speaker"),
-          ),
-          ListTile(
-            leading: Icon(Icons.radio),
-            title: Text("Radio"),
-          ),
-          ListTile(
-            leading: Icon(Icons.smartphone),
-            title: Text("Smart Phone"),
-          ),
-          ListTile(
-            leading: Icon(Icons.alarm),
-            title: Text("Alarm"),
-          ),
-          ListTile(
-            leading: Icon(Icons.air),
-            title: Text("Air"),
-          ),
+          ListViewData(
+              imgUrlContent:
+                  'https://juststickers.in/wp-content/uploads/2016/03/html5-css3-coaster.png',
+              textContent: 'CSS 3'),
+          ListViewData(
+              imgUrlContent:
+                  'https://juststickers.in/wp-content/uploads/2014/05/Wordpress-Shape-Cut.png',
+              textContent: 'Wordpress'),
+          ListViewData(
+              imgUrlContent:
+                  'https://juststickers.in/wp-content/uploads/2014/05/Tux-Shape-Cut.png',
+              textContent: 'Linux'),
         ],
       ),
     ));
+  }
+}
+
+class ListViewData extends StatelessWidget {
+  final String imgUrlContent;
+  final String textContent;
+  const ListViewData(
+      {super.key, required this.imgUrlContent, required this.textContent});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Padding(padding: EdgeInsets.all(20)),
+          Image(
+            image: NetworkImage(imgUrlContent),
+            width: 200,
+          ),
+          Text(
+            textContent,
+            style: TextStyle(fontSize: 20),
+          )
+        ],
+      ),
+    );
   }
 }
 
