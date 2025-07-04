@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(title: 'ListView JSON App', home: GridApp()));
+  runApp(MaterialApp(title: 'Grid App', home: GridApp()));
 }
 
 class GridApp extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(title: 'ListView JSON App', home: SnackBarApp()));
+  runApp(MaterialApp(title: 'SnackBar dan Alert App', home: SnackBarApp()));
 }
 
 class SnackBarApp extends StatefulWidget {

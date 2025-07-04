@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'detail.dart';
 
 void main() {
-  runApp(MaterialApp(title: 'ListView JSON App', home: SideDrawerApp()));
+  runApp(MaterialApp(title: 'Drawer App', home: SideDrawerApp()));
 }
 
 class SideDrawerApp extends StatefulWidget {
