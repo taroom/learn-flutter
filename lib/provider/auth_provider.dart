@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+var _fireAuth = FirebaseAuth.instance;
 
 class AuthProvider extends ChangeNotifier {
   final form = GlobalKey<FormState>();
@@ -18,15 +21,31 @@ class AuthProvider extends ChangeNotifier {
 
     try {
       if (isLogin) {
-        // final UserCredential = await _fireAuth.signInWithEmailAndPassword(
-        // email: enteredEmail, password: enteredPassword);
+        final userCredential = await _fireAuth.signInWithEmailAndPassword(
+            email: enteredEmail, password: enteredPassword);
       } else {
         //register
-        // final UserCredential = await _fireAuth.createUserWithEmailAndPassword(
-        // email: enteredEmail, password: enteredPassword);
+        final userCredential = await _fireAuth.createUserWithEmailAndPassword(
+            email: enteredEmail, password: enteredPassword);
       }
     } catch (e) {
-      // i
+      if (e is FirebaseException) {
+        if (e.code == 'email-already-in-use') {
+          //...
+        }
+
+        if (e.code == 'weak-password') {
+          //...
+        }
+
+        if (e.code == 'user-not-found') {
+          //...
+        }
+
+        if (e.code == 'wrong-password') {
+          //...
+        }
+      }
     }
     notifyListeners();
   }
