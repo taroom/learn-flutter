@@ -43,7 +43,7 @@ class _TextfieldEmailWidgetState extends State<TextfieldEmailWidget> {
           decoration: InputDecoration(
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-              hintText: "InsertEmail"),
+              hintText: "Insert Email"),
         )
       ],
     );

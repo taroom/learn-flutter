@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/provider/auth_provider.dart';
+import 'package:helloworld/widget/imgpick/imgpick_widget.dart';
 import 'package:helloworld/widget/textfield/textfield_email_widget.dart';
 import 'package:helloworld/widget/textfield/textfield_pass_widget.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,47 @@ class _LoginScreenState extends State<LoginScreen> {
           // https://youtu.be/nYk7B2LmPrc?si=Q6lfVyP5O4kdp8p8&t=1332
           body: Stack(
             children: <Widget>[
+              Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/img/dark-pola.png"),
+                        fit: BoxFit.cover)),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height / 4 - 20,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 29, 29, 29),
+                    borderRadius:
+                        BorderRadius.only(bottomLeft: Radius.circular(50)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.green,
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 5))
+                    ]),
+              ),
+              Column(
+                children: [
+                  Spacer(),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 4 - 20,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 29, 29, 29),
+                        borderRadius:
+                            BorderRadius.only(topRight: Radius.circular(50)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.green,
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, -5))
+                        ]),
+                  ),
+                ],
+              ),
               Container(
                 margin: EdgeInsets.all(20),
                 child: Column(
@@ -64,6 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         key: loadAuth.form,
                         child: Column(
                           children: [
+                            if (!loadAuth.isLogin) ImagePickWidget(),
                             TextfieldEmailWidget(
                               controller: txtControllerEmail,
                             ),
