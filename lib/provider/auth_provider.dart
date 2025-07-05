@@ -10,11 +10,14 @@ class AuthProvider extends ChangeNotifier {
   var enteredEmail = '';
   var enteredPassword = '';
 
-  void submit() async {
+  /// Ini akan menyimpan error atau status supaya bisa diakses di UI
+  String? errorMessage;
+
+  Future<bool> submit() async {
     final isvalid = form.currentState!.validate();
 
     if (!isvalid) {
-      return;
+      return false;
     }
 
     form.currentState!.save();
@@ -28,25 +31,32 @@ class AuthProvider extends ChangeNotifier {
         final userCredential = await _fireAuth.createUserWithEmailAndPassword(
             email: enteredEmail, password: enteredPassword);
       }
+
+      errorMessage = null;
+      notifyListeners();
+      return true;
     } catch (e) {
       if (e is FirebaseException) {
-        if (e.code == 'email-already-in-use') {
-          //...
-        }
-
-        if (e.code == 'weak-password') {
-          //...
-        }
-
-        if (e.code == 'user-not-found') {
-          //...
-        }
-
-        if (e.code == 'wrong-password') {
-          //...
+        switch (e.code) {
+          case 'email-already-in-use':
+            errorMessage = 'Email telah digunakan';
+            break;
+          case 'weak-password':
+            errorMessage = 'Password terlalu lemah';
+            break;
+          case 'user-not-found':
+            errorMessage = 'User tidak ditemukan';
+            break;
+          case 'wrong-password':
+            errorMessage = 'Password salah';
+            break;
+          default:
+            errorMessage = 'Terjadi kesalahan: ${e.message}';
         }
       }
+
+      notifyListeners();
+      return false;
     }
-    notifyListeners();
   }
 }

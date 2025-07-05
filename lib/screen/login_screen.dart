@@ -122,8 +122,27 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: EdgeInsets.all(0),
                               width: MediaQuery.of(context).size.width,
                               child: ElevatedButton(
-                                  onPressed: () {
-                                    loadAuth.submit();
+                                  onPressed: () async {
+                                    final success = await loadAuth.submit();
+
+                                    if (!context.mounted) return;
+                                    final msg = context
+                                        .read<AuthProvider>()
+                                        .errorMessage;
+
+                                    if (success) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                'Berhasil login/registrasi!')),
+                                      );
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(content: Text(msg!)),
+                                      );
+                                    }
                                   },
                                   child: Text(
                                       loadAuth.isLogin ? "Login" : "Register")),
