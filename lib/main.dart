@@ -3,12 +3,12 @@ import 'package:helloworld/provider/auth_provider.dart';
 import 'package:helloworld/provider/imagepick_provider.dart';
 import 'package:helloworld/screen/login_screen.dart';
 import 'package:provider/provider.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  // WidgetsFlutterBinding.ensureInitialized(); // ini buat apa?
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // ini buat apa?
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(const App());
 }
