@@ -1,0 +1,82 @@
+import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:helloworld/service/google_auth.dart';
+
+final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+
+class GoogleLoginScreen extends StatefulWidget {
+  const GoogleLoginScreen({super.key});
+
+  @override
+  State<GoogleLoginScreen> createState() => _GoogleLoginScreenState();
+}
+
+class _GoogleLoginScreenState extends State<GoogleLoginScreen> {
+  GoogleSignInAccount? _currentUser;
+  @override
+  void initState() {
+    super.initState();
+
+    _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
+      if (mounted) {
+        setState(() {
+          _currentUser = account;
+        });
+      }
+    });
+
+    _googleSignIn.signInSilently();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.teal,
+      appBar: AppBar(
+        title: const Text('Google Login'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (_currentUser != null)
+            Column(
+              children: [
+                CircleAvatar(
+                  backgroundImage: NetworkImage(_currentUser!.photoUrl ?? ''),
+                  radius: 40,
+                ),
+                SizedBox(height: 10),
+                Text('Hello, ${_currentUser!.displayName}'),
+                Text(_currentUser!.email),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () async {
+                    await _googleSignIn.signOut();
+                    setState(() {
+                      _currentUser = null;
+                    });
+                  },
+                  child: Text("Logout"),
+                )
+              ],
+            )
+          else
+            ElevatedButton(
+              onPressed: () async {
+                bool result = await FirebaseServices().signInWithGoogle();
+
+                if (!result && context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Google Sign-in Canceled or Failed"),
+                    ),
+                  );
+                }
+              },
+              child: Center(child: Text('Google Login')),
+            ),
+        ],
+      ),
+    );
+  }
+}
