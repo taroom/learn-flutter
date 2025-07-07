@@ -63,18 +63,34 @@ class _GoogleLoginScreenState extends State<GoogleLoginScreen> {
           else
             ElevatedButton(
               onPressed: () async {
-                bool result = await FirebaseServices().signInWithGoogle();
+                try {
+                  final account = await _googleSignIn.signIn();
+                  if (account == null) {
+                    // user cancel login
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Google Sign-in dibatalkan")),
+                      );
+                    }
+                    return;
+                  }
 
-                if (!result && context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text("Google Sign-in Canceled or Failed"),
-                    ),
-                  );
+                  setState(() {
+                    _currentUser = account;
+                  });
+
+                  // Optional: panggil Firebase auth jika mau
+                  await FirebaseServices().firebaseAuthWithGoogle(account);
+                } catch (e) {
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Terjadi kesalahan login")),
+                    );
+                  }
                 }
               },
               child: Center(child: Text('Google Login')),
-            ),
+            )
         ],
       ),
     );
